@@ -7,7 +7,6 @@ services:
     build:
       dockerfile: php.Dockerfile
       context: .
-    restart: always
     volumes:
       - "./www/:/var/www/html/"
     ports:
@@ -17,7 +16,6 @@ services:
   mysql-server:
     container_name: '${APP_NAME}-db'
     image: mysql:8.0.19
-    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: '${MYSQL_ROOT_PASS}'
       MYSQL_USER: '${MYSQL_USER}'
@@ -32,7 +30,6 @@ services:
   phpmyadmin:
     container_name: '${APP_NAME}-phpadmin'
     image: phpmyadmin/phpmyadmin:5.0.1
-    restart: always
     environment:
       PMA_HOST: mysql-server
       PMA_USER: '${PHPADMIN_USER}'
